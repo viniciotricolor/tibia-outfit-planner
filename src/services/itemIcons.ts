@@ -48,7 +48,6 @@ const ITEM_ICONS: Record<string, string> = {
   'White Piece of Cloth': `${W}/e/e3/White_Piece_of_Cloth.gif`,
   'Behemoth Claw': `${W}/9/9a/Behemoth_Claw.gif`,
   'Nose Ring': `${W}/3/34/Nose_Ring.gif`,
-  'Ape Fur': `${W}/8/84/Ape_Fur.gif`,
   'Eye Patch': `${W}/b/ba/Eye_Patch.gif`,
   'Peg Leg': `${W}/a/ab/Peg_Leg.gif`,
   'Hook': `${W}/2/2c/Hook.gif`,
