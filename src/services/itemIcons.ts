@@ -56,7 +56,6 @@ const ITEM_ICONS: Record<string, string> = {
   'Tribal Mask': `${W}/e/e3/Tribal_Mask.gif`,
   'Dworc Voodoo Doll': `${W}/3/34/Dworc_Voodoo_Doll.gif`,
   'Mandrake': `${W}/a/ab/Mandrake.gif`,
-  'Minotaur Leather': `${W}/9/9a/Minotaur_Leather.gif`,
 };
 
 export function getItemIconUrl(itemName: string): string | null {

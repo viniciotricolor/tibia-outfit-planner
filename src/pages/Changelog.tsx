@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { useI18n } from '../i18n/I18nContext';
-import { Tag, Calendar, Plus, Bug, Wrench, Sparkles, BookOpen } from 'lucide-react';
+import { Tag, Calendar, Plus, Wrench, Sparkles, BookOpen } from 'lucide-react';
 
 interface ChangelogEntry {
   version: string;
