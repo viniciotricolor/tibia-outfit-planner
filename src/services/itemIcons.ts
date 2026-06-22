@@ -131,6 +131,7 @@ const ITEM_ICONS: Record<string, string> = {
   'Spirit Container': `${W}/1/1d/Spirit_Container_%28Fighting_Spirit%29.gif`,
   'Epaulettes': `${W}/0/00/Epaulette.gif`,
   "Simon The Beggar's Hat": `${W}/4/4a/Simon_The_Beggar%27s_Hat.gif`,
+  "Simon The Beggar's Favorite Staff": `${W}/4/4a/Simon_The_Beggar%27s_Hat.gif`,
   'Document of the Officer': `${W}/9/94/Document_of_the_Officer.gif`,
   'Document of the Leader': `${W}/d/d3/Document_of_the_Leader.gif`,
   'Eye-Embroidered Veil': `${W}/2/23/Eye-Embroidered_Veil.gif`,
@@ -173,6 +174,7 @@ const ITEM_ICONS: Record<string, string> = {
   'Old Cape': `${W}/e/e2/Old_Cape.gif`,
   'Sedge Hat': `${W}/5/56/Sedge_Hat.gif`,
   'Vampiric Crest': `${W}/9/9c/Vampiric_Crest.gif`,
+  'Sturdy Books': `${W}/8/83/Sturdy_Book.gif`,
 };
 
 export function getItemIconUrl(itemName: string): string | null {
