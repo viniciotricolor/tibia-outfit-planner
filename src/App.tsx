@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
 import { useState } from 'react';
-import { Shirt, Calculator, Package, Map, Globe, RefreshCw, Info, Bell, BellOff, Users, Plus, Trash2, BookOpen, Shield, Heart } from 'lucide-react';
+import { Shirt, Calculator, Package, Map, Globe, RefreshCw, Info, Bell, BellOff, Users, Plus, Trash2, BookOpen, Shield, Heart, PawPrint } from 'lucide-react';
 import { motion } from 'motion/react';
 import Dashboard from './pages/Dashboard';
 import OutfitDetail from './pages/OutfitDetail';
@@ -9,6 +9,8 @@ import FarmPlanner from './pages/FarmPlanner';
 import Changelog from './pages/Changelog';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import About from './pages/About';
+import Mounts from './pages/Mounts';
+import MountDetail from './pages/MountDetail';
 import { AppProvider } from './context/AppProvider';
 import { useApp } from './context/AppContext';
 import { I18nProvider, useI18n } from './i18n/I18nContext';
@@ -166,6 +168,19 @@ function AppContent() {
                 {t('nav.outfits')}
               </NavLink>
               <NavLink
+                to="/mounts"
+                className={({ isActive }) =>
+                  `flex items-center px-3 py-2 rounded-md text-sm font-medium ${
+                    isActive
+                      ? 'bg-tibia-accent text-white'
+                      : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                  }`
+                }
+              >
+                <PawPrint className="h-4 w-4 mr-1" />
+                {t('nav.mounts')}
+              </NavLink>
+              <NavLink
                 to="/items"
                 className={({ isActive }) =>
                   `flex items-center px-3 py-2 rounded-md text-sm font-medium ${
@@ -269,6 +284,8 @@ function AppContent() {
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/outfit/:id" element={<OutfitDetail />} />
+          <Route path="/mounts" element={<Mounts />} />
+          <Route path="/mount/:id" element={<MountDetail />} />
           <Route path="/items" element={<TotalItems />} />
           <Route path="/inventory" element={<TotalItems />} />
           <Route path="/farm" element={<FarmPlanner />} />

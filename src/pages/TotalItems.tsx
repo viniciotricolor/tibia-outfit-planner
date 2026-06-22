@@ -1,11 +1,12 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useApp } from '../context/AppContext';
 import { useI18n } from '../i18n/I18nContext';
-import { Check, X, Package, TrendingUp } from 'lucide-react';
+import { Check, X, Package, TrendingUp, PawPrint } from 'lucide-react';
 import { formatGold, getPriceTrend } from '../services/market';
 import { getItemIconUrl } from '../services/itemIcons';
 import { ItemIconFallback } from '../components/ItemIconFallback';
 import { motion } from 'motion/react';
+import { sampleMounts } from '../data/mounts';
 
 export default function TotalItems() {
   const { getRequiredItems, updateInventoryItem, inventory, marketPrices, selectedWorld, loading } = useApp();
@@ -14,12 +15,52 @@ export default function TotalItems() {
   
   const [searchTerm, setSearchTerm] = useState('');
   const [sortBy, setSortBy] = useState<'name' | 'needed' | 'have' | 'missing' | 'value'>('name');
+  const [includeMountItems, setIncludeMountItems] = useState(() => {
+    return localStorage.getItem('tibiaIncludeMountItems') !== 'false';
+  });
+
+  const toggleIncludeMountItems = () => {
+    setIncludeMountItems(prev => {
+      const next = !prev;
+      localStorage.setItem('tibiaIncludeMountItems', String(next));
+      return next;
+    });
+  };
+
+  const charName = localStorage.getItem('tibiaOutfitCurrentChar') || 'Principal';
+  const tamedMountIds = useMemo(() => {
+    try {
+      const saved = localStorage.getItem(`tibiaMounts_${charName}`);
+      return saved ? JSON.parse(saved) as string[] : [];
+    } catch { return []; }
+  }, [charName]);
+
+  const mountItems = useMemo(() => {
+    const items: Record<string, number> = {};
+    sampleMounts
+      .filter(m => !tamedMountIds.includes(m.id) && m.items.length > 0)
+      .forEach(mount => {
+        mount.items.forEach(item => {
+          items[item.name] = (items[item.name] || 0) + item.amount;
+        });
+      });
+    return items;
+  }, [tamedMountIds]);
+
+  const allRequiredItems = useMemo(() => {
+    if (!includeMountItems) return requiredItems;
+    const merged = { ...requiredItems };
+    Object.entries(mountItems).forEach(([name, amount]) => {
+      merged[name] = (merged[name] || 0) + amount;
+    });
+    return merged;
+  }, [requiredItems, mountItems, includeMountItems]);
 
   const getItemPrice = (itemName: string) => {
     return marketPrices[itemName]?.offerPrice || 0;
   };
 
-  const items = Object.entries(requiredItems)
+  const items = Object.entries(allRequiredItems)
     .filter(([name]) => name.toLowerCase().includes(searchTerm.toLowerCase()))
     .map(([name, needed]) => ({
       name,
@@ -45,9 +86,9 @@ export default function TotalItems() {
       }
     });
 
-  const totalNeeded = Object.values(requiredItems).reduce((sum, val) => sum + val, 0);
-  const totalHave = Object.entries(requiredItems).reduce(
-    (sum, [name]) => sum + Math.min(inventory[name] || 0, requiredItems[name]),
+  const totalNeeded = Object.values(allRequiredItems).reduce((sum, val) => sum + val, 0);
+  const totalHave = Object.entries(allRequiredItems).reduce(
+    (sum, [name]) => sum + Math.min(inventory[name] || 0, allRequiredItems[name]),
     0
   );
   const totalMissing = totalNeeded - totalHave;
@@ -143,7 +184,19 @@ export default function TotalItems() {
               className="w-full bg-tibia-darker border border-gray-700 rounded-lg px-4 py-2 text-white placeholder-gray-500 focus:outline-none focus:border-tibia-accent"
             />
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 items-center">
+            <motion.button
+              whileTap={{ scale: 0.95 }}
+              onClick={toggleIncludeMountItems}
+              className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                includeMountItems
+                  ? 'bg-tibia-accent text-white'
+                  : 'bg-tibia-darker border border-gray-700 text-gray-400 hover:border-gray-600'
+              }`}
+            >
+              <PawPrint className="h-4 w-4" />
+              {t('items.includeMounts')}
+            </motion.button>
             <select
               value={sortBy}
               onChange={e => setSortBy(e.target.value as typeof sortBy)}

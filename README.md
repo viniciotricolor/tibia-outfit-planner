@@ -1,6 +1,6 @@
 # Tibia Outfit Planner
 
-Planejador completo de outfits do Tibia com preços do market, progresso e múltiplos personagens.
+Planejador completo de outfits e montarias do Tibia com preços do market, progresso e múltiplos personagens.
 
 ![React](https://img.shields.io/badge/React-19-61DAFB?style=flat&logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-6-3178C6?style=flat&logo=typescript)
@@ -20,6 +20,10 @@ Planejador completo de outfits do Tibia com preços do market, progresso e múlt
 - **Modo compacto/expandido** para cards
 - **Notificações browser** quando preços atualizam
 - **Histórico de preços** com indicadores ↑/↓
+- **110+ montarias** com rastreamento de progresso
+- **Filtro de montarias** por categorias (Domáveis, Store, Quests, etc.)
+- **Detalhe de montaria** com itens de doma e preços
+- **Itens de montaria** incluídos no Total de Itens
 - **Animações** com motion.dev
 - **Internacionalização** PT-BR / EN
 
@@ -58,13 +62,15 @@ npm run preview
 src/
 ├── components/       # Componentes reutilizáveis
 ├── context/          # React Context (estado global)
-├── data/             # Dados dos outfits (132 outfits)
+├── data/             # Dados dos outfits e montarias (132 outfits, 110+ montarias)
 ├── i18n/             # Internacionalização (PT-BR/EN)
 ├── pages/            # Páginas da aplicação
 │   ├── Dashboard.tsx     # Lista de outfits com favoritos
 │   ├── OutfitDetail.tsx  # Detalhe do outfit
 │   ├── TotalItems.tsx    # Total de itens necessários
 │   ├── FarmPlanner.tsx   # Planejamento de farm
+│   ├── Mounts.tsx        # Rastreamento de montarias
+│   ├── MountDetail.tsx   # Detalhe da montaria com itens de doma
 │   ├── Changelog.tsx     # Histórico de versões
 │   └── PrivacyPolicy.tsx # Política de Privacidade (LGPD)
 ├── services/         # Serviços (market API, wiki icons)
@@ -91,6 +97,14 @@ src/
 - Crie quantos personagens quiser
 - Cada um tem progresso independente
 - Troque entre personagens no seletor do nav
+
+### Montarias
+- 110+ montarias com imagens do TibiaWiki
+- Rastreamento de quais montarias estão domadas
+- Filtro por 12 categorias (Domáveis, Store, Quests, Eventos, etc.)
+- Detalhe da montaria com itens de doma e preços
+- Itens de montaria incluídos no Total de Itens (toggle)
+- Progresso por personagem
 
 ### Compartilhar
 - Gere um link com seu progresso

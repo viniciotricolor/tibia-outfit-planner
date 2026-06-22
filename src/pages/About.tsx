@@ -75,6 +75,22 @@ export default function About() {
               <span className="text-tibia-green mt-0.5">✓</span>
               {t('about.feature6')}
             </li>
+            <li className="flex items-start gap-2">
+              <span className="text-tibia-green mt-0.5">✓</span>
+              {t('about.feature7')}
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-tibia-green mt-0.5">✓</span>
+              {t('about.feature8')}
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-tibia-green mt-0.5">✓</span>
+              {t('about.feature9')}
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-tibia-green mt-0.5">✓</span>
+              {t('about.feature10')}
+            </li>
           </ul>
         </div>
 

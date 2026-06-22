@@ -11,6 +11,21 @@ interface ChangelogEntry {
 
 const changelog: ChangelogEntry[] = [
   {
+    version: '2.1.0',
+    date: '2026-06-22',
+    type: 'minor',
+    changes: [
+      { icon: <Sparkles className="h-4 w-4 text-yellow-400" />, text: 'Nova aba de Montarias com 110+ montarias do TibiaWiki' },
+      { icon: <Sparkles className="h-4 w-4 text-yellow-400" />, text: 'Rastreamento de montarias domadas por personagem' },
+      { icon: <Sparkles className="h-4 w-4 text-yellow-400" />, text: 'Filtro por 12 categorias (Domáveis, Store, Quests, Eventos, etc.)' },
+      { icon: <Sparkles className="h-4 w-4 text-yellow-400" />, text: 'Barra de progresso de montarias' },
+      { icon: <Sparkles className="h-4 w-4 text-yellow-400" />, text: 'Página de detalhe da montaria com itens de doma e preços' },
+      { icon: <Wrench className="h-4 w-4 text-blue-400" />, text: 'Itens de montaria incluídos no Total de Itens (toggle)' },
+      { icon: <Wrench className="h-4 w-4 text-blue-400" />, text: 'Busca por nome de montaria' },
+      { icon: <Wrench className="h-4 w-4 text-blue-400" />, text: 'Paginação e animações nos cards de montaria' },
+    ],
+  },
+  {
     version: '2.0.0',
     date: '2026-06-21',
     type: 'major',

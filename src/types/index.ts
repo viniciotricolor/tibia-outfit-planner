@@ -36,6 +36,25 @@ export interface Progress {
   totalItemsNeeded: number;
 }
 
+export type MountCategory = 'tameable' | 'store' | 'quest' | 'event' | 'invasion' | 'offer' | 'arena' | 'customizable' | 'rented' | 'hunting' | 'worldchange' | 'tibiadrome';
+
+export interface MountItem {
+  name: string;
+  amount: number;
+}
+
+export interface Mount {
+  id: string;
+  name: string;
+  category: MountCategory;
+  premium: boolean;
+  tamed: boolean;
+  imageUrl: string;
+  items: MountItem[];
+  requirements: string[];
+  wikiUrl?: string;
+}
+
 export interface AppState {
   outfits: Outfit[];
   inventory: PlayerInventory;
@@ -43,4 +62,5 @@ export interface AppState {
   favorites: string[];
   notificationsEnabled: boolean;
   cardMode: 'compact' | 'expanded';
+  mounts?: Mount[];
 }
