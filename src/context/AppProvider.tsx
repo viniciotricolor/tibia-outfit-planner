@@ -223,6 +223,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     outfits.filter(o => !o.completed).forEach(outfit => {
       outfit.addons.filter(a => !a.completed).forEach(addon => {
         addon.items.forEach(item => {
+          if (item.name === 'Gold') return;
           required[item.name] = (required[item.name] || 0) + item.amount;
         });
       });
