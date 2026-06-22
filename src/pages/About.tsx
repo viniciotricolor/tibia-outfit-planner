@@ -102,7 +102,7 @@ export default function About() {
 
         <div className="text-center pt-4">
           <a
-            href="https://github.com/vinicio/tibia-outfit-planner"
+            href="https://github.com/viniciotricolor/tibia-outfit-planner"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white rounded-lg text-sm font-medium transition-colors"

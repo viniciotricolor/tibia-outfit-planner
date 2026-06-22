@@ -131,7 +131,7 @@ export default function Changelog() {
 
       <div className="mt-12 text-center">
         <a
-          href="https://github.com/vinicio/tibia-outfit-planner/releases"
+          href="https://github.com/viniciotricolor/tibia-outfit-planner/releases"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-tibia-gold transition-colors"
